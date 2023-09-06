@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  position: relative;
+}
+* {
+  box-sizing: border-box;
+}
+.main-container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+#notePad {
+  position: absolute;
+  width: 500px;
+  min-height: 500px;
+  border-radius: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-15%);
+  z-index: 999;
+  transition: 500ms;
+}
+.title-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  padding-left: 5px;
+  margin-top: 15px;
+}
+.title-input::placeholder {
+  color: #000;
 }
 
-.App-link {
-  color: #61dafb;
+.plus-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  cursor: pointer;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.note-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  padding-left: 5px;
+  margin-top: 25px;
+  margin-left: 15px;
+}
+.note-input::placeholder {
+  color: #000;
+}
+.add-btn {
+  width: 100px;
+  height: 30px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 15px;
+}
+.trash-icon {
+  opacity: 0;
+}
+.note-container:hover .trash-icon {
+  opacity: 1;
+  transition: 300ms;
 }
